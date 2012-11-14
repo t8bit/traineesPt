@@ -46,7 +46,7 @@ $('#video').load('app/video.php');
 	if(isset($_SESSION['user_profile']))
 	{
 		print_r($_SESSION);
-		echo "<div id='video'><img src='images/load.gif'/></div>"
+		echo "<div id='video'><img src='images/load.gif'/></div>";
 		echo "<a href='logout.php?logout'>Logout</a>";
 	}
  ?>

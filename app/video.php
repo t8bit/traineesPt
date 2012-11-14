@@ -5,7 +5,7 @@ $id=$_SESSION['id'];
 $auth_id=$_SESSION['oauth_id'];
 $email=$_SESSION['email'];
 $oauth_provider=$_SESSION['oauth_provider'];
-$vm = new videoManapulator($id,'4.MOV');
+$vm = new videoManipulator($id,'4.MOV');
 shell_exec('chmod -R 777 .');
 shell_exec('mkdir '.$id);
 shell_exec('mkdir '.$id.'/videos.out');
