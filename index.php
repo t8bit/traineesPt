@@ -13,6 +13,10 @@ if (array_key_exists("login", $_GET)) {
     }
 }
 ?>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+<script>
+$('#video').load('app/video.php');
+</script>
 <title>Facebook Login</title>
 <style type="text/css">
     #buttons
@@ -34,7 +38,6 @@ if (array_key_exists("login", $_GET)) {
 
 <div id="buttons">
 <h1>Facebook Login </h1>
-<!--<a href="?login&oauth_provider=facebook"><img src="images/fb_login.png"></a> <br />-->
 
 	<br />   
 </div>
@@ -43,6 +46,7 @@ if (array_key_exists("login", $_GET)) {
 	if(isset($_SESSION['user_profile']))
 	{
 		print_r($_SESSION);
+		echo "<div id='video'><img src='images/load.gif'/></div>"
 		echo "<a href='logout.php?logout'>Logout</a>";
 	}
  ?>
