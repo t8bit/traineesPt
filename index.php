@@ -1,10 +1,9 @@
 <?php
 //Always place this code at the top of the Page
 session_start();
-if (isset($_SESSION['id'])){
-	 // Redirection to login page twitter or facebook
-	 // header("location: home.php");
-	 //load this page;
+if (!isset($_SESSION['id'])){
+	 //Load on start
+	header("Location: login-facebook.php");
 }
 
 if (array_key_exists("login", $_GET)) {
@@ -35,7 +34,8 @@ if (array_key_exists("login", $_GET)) {
 
 <div id="buttons">
 <h1>Facebook Login </h1>
-    <a href="?login&oauth_provider=facebook"><img src="images/fb_login.png"></a> <br />
+<!--<a href="?login&oauth_provider=facebook"><img src="images/fb_login.png"></a> <br />-->
+
 	<br />   
 </div>
 <pre>
