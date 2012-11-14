@@ -4,11 +4,7 @@ require 'facebook/facebook.php';
 require 'config/fbconfig.php';
 require 'config/functions.php';
 
-$facebook = new Facebook(array(
-            'appId' => APP_ID,
-            'secret' => APP_SECRET,
-            ));
-
+$facebook = new Facebook(array('appId' => APP_ID,'secret' => APP_SECRET));
 $user = $facebook->getUser();
 
 if ($user) {
@@ -29,9 +25,13 @@ if ($user) {
         # User info ok? Let's print it (Here we will be adding the login and registering routines)
   
         $username = $user_profile['name'];
-			 $uid = $user_profile['id'];
-		 $email = $user_profile['email'];
+	$uid = $user_profile['id'];
+	$email = $user_profile['email'];
         $user = new User();
+	//echo "<pre>";
+	//print_r($user_profile);
+	$_SESSION['user_profile']=$user_profile; 
+	//echo "</pre>";
         $userdata = $user->checkUser($uid, 'facebook', $username,$email,$twitter_otoken,$twitter_otoken_secret);
         if(!empty($userdata)){
             session_start();
@@ -41,7 +41,7 @@ if ($user) {
             $_SESSION['username'] = $userdata['username'];
 			$_SESSION['email'] = $email;
             $_SESSION['oauth_provider'] = $userdata['oauth_provider'];
-            header("Location: home.php");
+            header("Location: index.php");
         }
     } else {
         # For testing purposes, if there was an error, let's kill the script
@@ -53,3 +53,4 @@ if ($user) {
     header("Location: " . $login_url);
 }
 ?>
+
